@@ -1,6 +1,5 @@
 import flet as ft
 
-
 class Controller:
     def __init__(self, view, model):
         # the view, with the graphical elements of the UI
@@ -44,6 +43,9 @@ class Controller:
         for el in vicini:
             self._view.txt_result.controls.append(ft.Text(f"{el[0]} -- {el[1]} vicini."))
 
+        self._view._DDStati.value = None
+        self._view._DDStati.options = []
+
         self._view._DDStati.disabled = False
         self._view._btnTrova.disabled = False
 
@@ -69,7 +71,7 @@ class Controller:
             self._view.txt_result.controls.append(ft.Text(f"Non posso raggiungere nessun altro stato"))
         else:
             self._view.txt_result.controls.append(ft.Text(f"Gli stati raggiungibili da {stato} sono:"))
-            # lista.remove(lista[0])
+            # lista.remove(lista[0]) # se non si vuole considerare il nodo di partenza
             for el in lista:
                 self._view.txt_result.controls.append(ft.Text(f"- {el}"))
         self._view.update_page()

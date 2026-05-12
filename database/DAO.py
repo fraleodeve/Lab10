@@ -2,7 +2,6 @@ from database.DB_connect import DBConnect
 from model.confine import Confine
 from model.stato import Stato
 
-
 class DAO():
     @staticmethod
     def getAllConfini(anno):
