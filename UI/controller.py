@@ -65,6 +65,7 @@ class Controller:
             return
 
         lista = self._model.statiRaggiungibili(stato)
+        print(f"Gli stati raggiungibili da {stato} sono: {len(lista)}")
 
         self._view.txt_result.controls.clear()
         if len(lista) == 1:
