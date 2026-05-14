@@ -65,6 +65,7 @@ class Controller:
             return
 
         lista = self._model.statiRaggiungibili(stato)
+        # listaR = self._model.ricorsione(stato, None) con la ricorsione
         print(f"Gli stati raggiungibili da {stato} sono: {len(lista)}")
 
         self._view.txt_result.controls.clear()

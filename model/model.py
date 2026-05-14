@@ -49,6 +49,20 @@ class Model:
                 # return sorted(lista, key=lambda x: x.StateNme)
                 return lista
 
+    def ricorsione(self, stato: str, visitati: None):
+        if visitati == None:
+            visitati = set()
+
+        nodo = self.getNodoStringa(stato)
+        # print(nodo)
+        visitati.add(nodo)
+
+        for vicino in self._grafo[nodo]:
+            if vicino not in visitati:
+                self.ricorsione(vicino.StateNme, visitati)
+
+        return visitati
+
     def getNumNodes(self):
         return len(self._grafo.nodes)  # equivalente a self._nodes
 
@@ -65,6 +79,11 @@ class Model:
 
     def getConnesse(self):
         return nx.number_connected_components(self._grafo)
+
+    def getNodoStringa(self, stringa: str):
+        for el in DAO.getAllStati():
+            if el.StateNme == stringa:
+                return el
 
 
 
